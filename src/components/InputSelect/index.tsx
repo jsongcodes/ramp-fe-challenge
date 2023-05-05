@@ -21,20 +21,14 @@ export function InputSelect<TItem>({
   const onChange = useCallback<InputSelectOnChange<TItem>>(
     (selectedItem) => {
       if (selectedItem === null) {
-        return;
+        return
       }
-  
-      if (selectedItem === "all") {
-        consumerOnChange(null);
-        setSelectedValue(defaultValue ?? null);
-      } else {
-        consumerOnChange(selectedItem);
-        setSelectedValue(selectedItem);
-      }
+
+      consumerOnChange(selectedItem)
+      setSelectedValue(selectedItem)
     },
-    [consumerOnChange, defaultValue]
-  );
-  
+    [consumerOnChange]
+  )
 
   return (
     <Downshift<TItem>
@@ -69,7 +63,7 @@ export function InputSelect<TItem>({
                 toggleProps.onClick(event)
               }}
             >
-              {inputValue}
+              {inputValue} 
             </div>
 
             <div
